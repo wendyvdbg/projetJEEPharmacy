@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jee.model.Article;
+
 /**
  * Servlet implementation class ArticleForm
  */
@@ -34,8 +36,11 @@ public class ArticleForm extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String title = request.getParameter("title");
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
+		double price = Double.parseDouble(request.getParameter("price"));
+		Article article = new Article(title,quantity,price);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/articles.jsp").forward(request, response);
 	}
 
 }
