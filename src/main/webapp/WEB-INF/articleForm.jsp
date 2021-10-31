@@ -9,7 +9,7 @@
 <body>
 <div class="container">
 <h1>Pharmacie</h1>
-<form action="create.jsp" method="post">
+<form action="articleForm" method="post">
 <div class="form-group">
 <label for="title">Titre</label>
 <input type="text" class="form-control" id="title" name="title" placeholder="Titre">
