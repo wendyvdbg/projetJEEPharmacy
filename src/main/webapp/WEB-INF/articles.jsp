@@ -9,7 +9,10 @@
 <body>
 <%@ include file="navbar.jsp" %>
 <div class=" w-100 d-flex">
-<button type="button" class="btn btn-primary mt-4 mb-2 ms-auto me-2">Ajouter un article</button>
+<a class=" mt-4 mb-2 ms-auto me-2" href="articleForm"><button type="button" class="btn btn-primary ">Ajouter un article</button></a>
+</div>
+<div class="alert alert-success" role="alert">
+  Article créé avec succès !
 </div>
 <table class="table">
   <thead>
