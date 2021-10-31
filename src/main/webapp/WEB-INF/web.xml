@@ -8,10 +8,14 @@
 	<servlet>
 		<servlet-name>Articles</servlet-name>
 		<servlet-class>com.jee.servlets.Articles</servlet-class>
+		<servlet-name>ArticleForm</servlet-name>
+		<servlet-class>com.jee.servlets.ArticleForm</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>Articles</servlet-name>
 		<url-pattern>/articles</url-pattern>
+		<servlet-name>ArticleForm</servlet-name>
+		<url-pattern>/articleForm</url-pattern>
 	</servlet-mapping>
 </web-app>
