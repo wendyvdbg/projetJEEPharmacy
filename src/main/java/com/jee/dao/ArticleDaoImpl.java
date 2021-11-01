@@ -55,5 +55,7 @@ public class ArticleDaoImpl implements ArticleDao {
 		}
 		return articles;
 	}
+	
+	// todo créer une nouvelle fonction supprimé, qui prend en paramètre un ID d'article
 
 }

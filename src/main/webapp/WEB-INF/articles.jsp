@@ -37,6 +37,7 @@
 				<th scope="col">Articles</th>
 				<th scope="col">Quantité</th>
 				<th scope="col">Prix</th>
+				<th scope="col">Actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -46,6 +47,8 @@
 					<td>${article.title}</td>
 					<td>${article.quantity}</td>
 					<td>${article.price}</td>
+					<td> <button
+				type="button" class="btn btn-danger ">Supprimer</button> </td>
 				</tr>
 			</c:forEach>
 		</tbody>
