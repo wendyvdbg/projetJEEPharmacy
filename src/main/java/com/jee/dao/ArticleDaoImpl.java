@@ -94,5 +94,25 @@ public class ArticleDaoImpl implements ArticleDao {
 			e.printStackTrace();
 		}
 	}
+	
+	@Override
+	public void modifier(Article article) {
+		Connection connexion = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connexion = daoFactory.getConnection();
+			preparedStatement = connexion
+					.prepareStatement("UPDATE articles SET title=?, quantity=?, price=? WHERE id=?;");	
+			preparedStatement.setString(1, article.getTitle());
+			preparedStatement.setInt(2, article.getQuantity());
+			preparedStatement.setDouble(3, article.getPrice());
+			preparedStatement.setInt(4, article.getId());
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 }

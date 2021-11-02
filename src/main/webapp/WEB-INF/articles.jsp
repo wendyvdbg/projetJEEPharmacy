@@ -21,6 +21,11 @@
 			<p>Article ${requestScope.article.title} créé avec succès</p>
 		</div>
 	</c:if>
+		<c:if test="${requestScope.successUpdate}" var="variable">
+		<div class="alert alert-success mb-2" role="alert">
+			<p>Article ${requestScope.article.title} mis à jour avec succès</p>
+		</div>
+	</c:if>
 	<c:if test="${requestScope.erreurCreation.length() > 0 }"
 		var="variable">
 		<div class="alert alert-danger mb-2" role="alert">
@@ -48,10 +53,27 @@
 					<td>${article.quantity}</td>
 					<td>${article.price}</td>
 					<td>
-						  <form action="Articles" method="post">
-                           <input type="text" class="form-control invisible" id="id" name="id" value="${article.id}">
-                            <button type="submit" class="btn btn-danger ">Supprimer</button>
-                        </form>
+						<form action="ArticleForm" method="get">
+							<input type="text" class="form-control d-none" id="id" name="id"
+								value="${article.id}">
+							 <input type="text"
+								class="form-control d-none" id="title" name="title"
+								value="${article.title}">
+							 <input type="text"
+								class="form-control d-none" id="quantity" name="quantity"
+								value="${article.quantity}">
+								 <input type="text"
+								class="form-control d-none" id="price" name="price"
+								value="${article.price}">
+							<button type="submit" class="btn btn-primary ">modifier</button>
+						</form>
+					</td>
+					<td>
+						<form action="Articles" method="post">
+							<input type="text" class="form-control d-none" id="id" name="id"
+								value="${article.id}">
+							<button type="submit" class="btn btn-danger ">Supprimer</button>
+						</form>
 					</td>
 				</tr>
 			</c:forEach>

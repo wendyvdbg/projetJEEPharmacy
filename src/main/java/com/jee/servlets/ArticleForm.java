@@ -36,6 +36,10 @@ public class ArticleForm extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		if(request.getParameter("id") != null && !request.getParameter("id").isEmpty()) {
+			Article article = new Article(Integer.parseInt(request.getParameter("id")),request.getParameter("title"), Integer.parseInt(request.getParameter("quantity")), Double.parseDouble(request.getParameter("price")));
+			request.setAttribute("article", article);
+		} 
 		this.getServletContext().getRequestDispatcher("/WEB-INF/articleForm.jsp").forward(request, response);
 	}
 
@@ -51,14 +55,19 @@ public class ArticleForm extends HttpServlet {
 		int quantity;
 		double price;
 		Article article = null;
+		
 		try {
 			title = request.getParameter("title");
 			if(title.isEmpty()) {
 				throw new IllegalArgumentException();
 			}
+			if(!request.getParameter("id").isEmpty()) {
+				id = Integer.parseInt(request.getParameter("id"));
+			}
 			quantity = Integer.parseInt(request.getParameter("quantity"));
 			price = Double.parseDouble(request.getParameter("price"));
 			article = new Article(id,title, quantity, price);
+			
 			
 		} catch (NumberFormatException e) {
 			success = false;
@@ -67,10 +76,18 @@ public class ArticleForm extends HttpServlet {
 			success = false;
 			request.setAttribute("erreurCreation", "impossible de créer l'article");
 		}
+
 		if(success) {
-			articleDao.ajouter(article);
-			request.setAttribute("successCreation", success);
-			request.setAttribute("article", article);
+			if(id == 0) {
+				articleDao.ajouter(article);
+				request.setAttribute("successCreation", success);
+				request.setAttribute("article", article);
+			}
+			if (id != 0) {
+				articleDao.modifier(article);
+				request.setAttribute("successUpdate", success);
+				request.setAttribute("article", article);
+			}
 		}
 		request.setAttribute("articles", articleDao.lister());
 		this.getServletContext().getRequestDispatcher("/WEB-INF/articles.jsp").forward(request, response);
