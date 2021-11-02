@@ -43,7 +43,10 @@ public class Articles extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("je suis la");
+		int id = Integer.parseInt(request.getParameter("id"));
+		articleDao.supprimer(id);
+		request.setAttribute("articles", articleDao.lister());
+		this.getServletContext().getRequestDispatcher("/WEB-INF/articles.jsp").forward(request, response);
 	}
 
 }

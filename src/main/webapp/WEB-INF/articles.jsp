@@ -49,7 +49,7 @@
 					<td>${article.price}</td>
 					<td>
 						  <form action="Articles" method="post">
-                           <input type="text" class="form-control" id="id" name="id" value="${article.id}">
+                           <input type="text" class="form-control invisible" id="id" name="id" value="${article.id}">
                             <button type="submit" class="btn btn-danger ">Supprimer</button>
                         </form>
 					</td>

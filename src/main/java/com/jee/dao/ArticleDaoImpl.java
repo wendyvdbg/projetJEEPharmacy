@@ -89,6 +89,7 @@ public class ArticleDaoImpl implements ArticleDao {
 			preparedStatement = connexion
 					.prepareStatement("DELETE FROM articles WHERE id= ?;");
 			preparedStatement.setInt(1, id);
+			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
