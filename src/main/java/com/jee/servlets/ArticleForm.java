@@ -44,22 +44,26 @@ public class ArticleForm extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException,IllegalArgumentException{
 		boolean success = true;
+		int id = 0;
 		String title;
 		int quantity;
 		double price;
 		Article article = null;
 		try {
 			title = request.getParameter("title");
+			if(title.isEmpty()) {
+				throw new IllegalArgumentException();
+			}
 			quantity = Integer.parseInt(request.getParameter("quantity"));
 			price = Double.parseDouble(request.getParameter("price"));
-			article = new Article(title, quantity, price);
+			article = new Article(id,title, quantity, price);
 			
 		} catch (NumberFormatException e) {
 			success = false;
 			request.setAttribute("erreurCreation", "Merci de fournir un chiffre correct");
-		} catch (Exception e) {
+		} catch (IllegalArgumentException e) {
 			success = false;
 			request.setAttribute("erreurCreation", "impossible de créer l'article");
 		}

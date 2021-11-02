@@ -46,7 +46,7 @@ public class ArticleDaoImpl implements ArticleDao {
 			resultat = statement.executeQuery("SELECT * FROM articles;");
 
 			while (resultat.next()) {
-				Article article = new Article(resultat.getString("title"), resultat.getInt("quantity"),
+				Article article = new Article(resultat.getInt("id"),resultat.getString("title"), resultat.getInt("quantity"),
 						resultat.getDouble("price"));
 				articles.add(article);
 			}
@@ -56,6 +56,32 @@ public class ArticleDaoImpl implements ArticleDao {
 		return articles;
 	}
 	
+	public Article trouver(int id) {
+		Connection connexion = null;
+		PreparedStatement preparedStatement = null;
+		Article article = new Article();
+		ResultSet resultat;
+		
+		try {
+			connexion = daoFactory.getConnection();
+			preparedStatement = connexion
+					.prepareStatement("SELECT * FROM articles WHERE id= ?;");
+			preparedStatement.setInt(1, id);
+			resultat = preparedStatement.executeQuery();
+			article.setId(resultat.getInt("id"));
+			article.setTitle(resultat.getString("title"));
+			article.setQuantity(resultat.getInt("quantity"));
+			article.setPrice(resultat.getDouble("price"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return article;
+		
+	}
 	// todo créer une nouvelle fonction supprimé, qui prend en paramètre un ID d'article
+	public void supprimer(int id) {
+		
+		
+	}
 
 }

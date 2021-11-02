@@ -6,13 +6,22 @@ public class Article {
 	private int quantity;
 	private double price;
 
-	public Article(String title, int quantity, double price) {
+	public Article(int id, String title, int quantity, double price) {
 		super();
+		this.id = id;
 		this.title = title;
 		this.quantity = quantity;
 		this.price = price;
 	}
 	
+	
+
+	public Article() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public int getId() {
 		return id;
 	}
