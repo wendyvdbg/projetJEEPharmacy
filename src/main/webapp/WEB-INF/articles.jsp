@@ -48,9 +48,10 @@
 					<td>${article.quantity}</td>
 					<td>${article.price}</td>
 					<td>
-						<form action="article" method="post">
-							<button type="button" class="btn btn-danger ">Supprimer</button>
-						</form>
+						  <form action="Articles" method="post">
+                           <input type="text" class="form-control" id="id" name="id" value="${article.id}">
+                            <button type="submit" class="btn btn-danger ">Supprimer</button>
+                        </form>
 					</td>
 				</tr>
 			</c:forEach>
