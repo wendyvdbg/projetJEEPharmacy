@@ -55,7 +55,7 @@ public class ArticleDaoImpl implements ArticleDao {
 		}
 		return articles;
 	}
-	
+	@Override
 	public Article trouver(int id) {
 		Connection connexion = null;
 		PreparedStatement preparedStatement = null;
@@ -78,10 +78,20 @@ public class ArticleDaoImpl implements ArticleDao {
 		return article;
 		
 	}
-	// todo créer une nouvelle fonction supprimé, qui prend en paramètre un ID d'article
+	@Override
 	public void supprimer(int id) {
 		
+		Connection connexion = null;
+		PreparedStatement preparedStatement = null;
 		
+		try {
+			connexion = daoFactory.getConnection();
+			preparedStatement = connexion
+					.prepareStatement("DELETE FROM articles WHERE id= ?;");
+			preparedStatement.setInt(1, id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -47,8 +47,11 @@
 					<td>${article.title}</td>
 					<td>${article.quantity}</td>
 					<td>${article.price}</td>
-					<td> <button
-				type="button" class="btn btn-danger ">Supprimer</button> </td>
+					<td>
+						<form action="article" method="post">
+							<button type="button" class="btn btn-danger ">Supprimer</button>
+						</form>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
