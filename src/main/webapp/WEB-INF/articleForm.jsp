@@ -11,6 +11,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
+<%@ include file="navbar.jsp"%>
 	<div class="container">
 		<h1>Pharmacie</h1>
 		<c:if
