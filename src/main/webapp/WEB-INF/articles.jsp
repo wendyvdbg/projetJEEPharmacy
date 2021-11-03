@@ -42,7 +42,6 @@
 				<th scope="col">Articles</th>
 				<th scope="col">Quantité</th>
 				<th scope="col">Prix</th>
-				<th scope="col">Actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -65,7 +64,7 @@
 								 <input type="text"
 								class="form-control d-none" id="price" name="price"
 								value="${article.price}">
-							<button type="submit" class="btn btn-primary ">modifier</button>
+							<button type="submit" class="btn btn-outline-primary ">modifier</button>
 						</form>
 					</td>
 					<td>
