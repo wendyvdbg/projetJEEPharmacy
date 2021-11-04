@@ -1,6 +1,7 @@
-package com.jee.model;
+package com.jee.presentation.model;
 
 public class Article {
+	
 	private int id;
 	private String title;
 	private int quantity;
