@@ -52,7 +52,7 @@ public class ArticleDaoImpl implements IArticleDao {
 	public ArticleDo find(Integer idArticleDo) {
 		 try (final Session session = sessionFactory.openSession()) {
 	            final Transaction transaction = session.beginTransaction();
-	            final Query<ArticleDo> query = session.createQuery("From ProduitDo where id = :idParam", ArticleDo.class);
+	            final Query<ArticleDo> query = session.createQuery("From ArticleDo where id = :idParam", ArticleDo.class);
 	            // on initialise le paramètre
 	            query.setParameter("idParam", idArticleDo);
 	            // regarder la Javadoc de Optional
