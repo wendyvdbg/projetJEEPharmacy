@@ -10,7 +10,7 @@ import org.hibernate.cfg.Configuration;
  * HibernateFactory <br/>
  * Permet de charger la configuration Hibernate et de fournir une sessionFactory en singleton
  * 
- * @author xavier
+ * @author Wendy
  * 
  */
 public class HibernateFactory {
