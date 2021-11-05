@@ -36,4 +36,8 @@ public class DaoFactory {
     public ArticleDao getArticleDao() {
         return new ArticleDaoImpl(this);
     }
+    
+    public UserDao getUserDao() {
+        return new UserDaoImpl(this);
+    }
 }
