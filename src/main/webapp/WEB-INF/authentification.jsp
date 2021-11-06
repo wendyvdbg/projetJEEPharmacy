@@ -12,11 +12,13 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<div class="container">
-		<h1>Pharmacie</h1>
+	<div class="container ">
+		<div class="d-flex ">
+			<h1 class="mx-auto">Authentification</h1>
+		</div>
 		<c:if test="${requestScope.errorLogin}" var="variable">
 			<div class="alert alert-danger mb-2" role="alert">
-				<p> Email ou mot de passe incorrecte !</p>
+				<p>Email ou mot de passe incorrecte !</p>
 			</div>
 		</c:if>
 		<form action="Authentification" method="post">
@@ -24,11 +26,13 @@
 				<input type="email" class="form-control" id="email" name="email"
 					placeholder="email">
 			</div>
-			<div class="form-group">
-				<input type="password" class="form-control" id="password"
+			<div class="form-group ">
+				<input type="password" class="form-control " id="password"
 					name="password" placeholder="password">
 			</div>
-			<button type="submit" class="btn btn-primary">Connexion</button>
+			<div class="d-flex ">
+				<button type="submit" class="btn btn-primary mx-auto mt-2">Connexion</button>
+			</div>
 		</form>
 	</div>
 </body>

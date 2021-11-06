@@ -19,34 +19,52 @@ import com.jee.dao.DaoFactory;
 public class Articles extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ArticleDao articleDao;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Articles() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    public void init() throws ServletException {
-        DaoFactory daoFactory = DaoFactory.getInstance();
-        this.articleDao = daoFactory.getArticleDao();
-    }
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setAttribute("articles", articleDao.lister());
-		this.getServletContext().getRequestDispatcher("/WEB-INF/articles.jsp").forward(request, response);
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Articles() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public void init() throws ServletException {
+		DaoFactory daoFactory = DaoFactory.getInstance();
+		this.articleDao = daoFactory.getArticleDao();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		articleDao.supprimer(id);
-		request.setAttribute("articles", articleDao.lister());
-		this.getServletContext().getRequestDispatcher("/WEB-INF/articles.jsp").forward(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		if (request.getSession(false).getAttribute("connected") != null
+				&& (boolean) request.getSession(false).getAttribute("connected") == true) {
+			request.setAttribute("articles", articleDao.lister());
+			this.getServletContext().getRequestDispatcher("/WEB-INF/articles.jsp").forward(request, response);
+		} else {
+			this.getServletContext().getRequestDispatcher("/WEB-INF/authentification.jsp").forward(request, response);
+		}
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		if (request.getSession(false).getAttribute("connected") != null
+				&& (boolean) request.getSession(false).getAttribute("connected") == true) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			articleDao.supprimer(id);
+			request.setAttribute("articles", articleDao.lister());
+			this.getServletContext().getRequestDispatcher("/WEB-INF/articles.jsp").forward(request, response);
+		} else {
+			this.getServletContext().getRequestDispatcher("/WEB-INF/authentification.jsp").forward(request, response);
+		}
+
 	}
 
 }
