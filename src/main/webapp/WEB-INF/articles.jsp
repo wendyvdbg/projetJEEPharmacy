@@ -12,6 +12,10 @@
 </head>
 <body>
 	<%@ include file="navbar.jsp"%>
+	<div class="d-flex ">
+		<h1 class="mx-auto mt-5">Bienvenue dans le stock de la pharmacie
+			Wendy Alexandra Amira</h1>
+	</div>
 	<div class=" w-100 d-flex">
 		<a class=" mt-4 mb-2 ms-auto me-2" href="articleForm"><button
 				type="button" class="btn btn-primary ">Ajouter un article</button></a>
@@ -21,7 +25,7 @@
 			<p>Article ${requestScope.article.title} créé avec succès</p>
 		</div>
 	</c:if>
-		<c:if test="${requestScope.successUpdate}" var="variable">
+	<c:if test="${requestScope.successUpdate}" var="variable">
 		<div class="alert alert-success mb-2" role="alert">
 			<p>Article ${requestScope.article.title} mis à jour avec succès</p>
 		</div>
@@ -54,14 +58,11 @@
 					<td>
 						<form action="ArticleForm" method="get">
 							<input type="text" class="form-control d-none" id="id" name="id"
-								value="${article.id}">
-							 <input type="text"
+								value="${article.id}"> <input type="text"
 								class="form-control d-none" id="title" name="title"
-								value="${article.title}">
-							 <input type="text"
+								value="${article.title}"> <input type="text"
 								class="form-control d-none" id="quantity" name="quantity"
-								value="${article.quantity}">
-								 <input type="text"
+								value="${article.quantity}"> <input type="text"
 								class="form-control d-none" id="price" name="price"
 								value="${article.price}">
 							<button type="submit" class="btn btn-outline-primary ">modifier</button>

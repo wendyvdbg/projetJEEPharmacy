@@ -11,9 +11,11 @@
 	crossorigin="anonymous">
 </head>
 <body>
-<%@ include file="navbar.jsp"%>
+	<%@ include file="navbar.jsp"%>
 	<div class="container">
-		<h1>Pharmacie</h1>
+		<div class="d-flex ">
+			<h1 class="mx-auto mt-5">Ajout d'un article</h1>
+		</div>
 		<c:if
 			test="${requestScope.article.id != null && not empty requestScope.article.id }"
 			var="variable">
@@ -21,9 +23,8 @@
 		</c:if>
 		<form action="articleForm" method="post">
 			<div class="form-group">
-				<input type="text"
-					class="form-control d-none" id="id" name="id" placeholder="id"
-					value="${requestScope.article.id}">
+				<input type="text" class="form-control d-none" id="id" name="id"
+					placeholder="id" value="${requestScope.article.id}">
 			</div>
 			<div class="form-group">
 				<label for="title">Titre</label> <input type="text"
@@ -46,7 +47,9 @@
 					<button type="submit" class="btn btn-primary">Modifier</button>
 				</c:when>
 				<c:otherwise>
-					<button type="submit" class="btn btn-primary">Créer</button>
+				<div class="d-flex ">
+					<button type="submit" class="btn btn-primary mx-auto mt-2">Créer</button>
+					</div>
 				</c:otherwise>
 			</c:choose>
 		</form>
