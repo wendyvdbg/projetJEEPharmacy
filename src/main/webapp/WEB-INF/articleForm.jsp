@@ -13,13 +13,17 @@
 <body>
 	<%@ include file="navbar.jsp"%>
 	<div class="container">
+	<c:if test="${requestScope.article.id == null && ! not empty requestScope.article.id }">
 		<div class="d-flex ">
 			<h1 class="mx-auto mt-5">Ajout d'un article</h1>
 		</div>
+		</c:if>
 		<c:if
 			test="${requestScope.article.id != null && not empty requestScope.article.id }"
 			var="variable">
-			<h2>Edition de l'article ${requestScope.article.title}</h2>
+			<div class="d-flex ">
+			<h2 class="mx-auto mt-5">Edition de l'article ${requestScope.article.title}</h2>
+			</div>
 		</c:if>
 		<form action="articleForm" method="post">
 			<div class="form-group">
@@ -41,18 +45,21 @@
 					value="${requestScope.article.price}" class="form-control"
 					id="price" name="price" placeholder="Prix">
 			</div>
+			</form>
 			<c:choose>
 				<c:when
 					test="${requestScope.article.id != null && not empty requestScope.article.id }">
-					<button type="submit" class="btn btn-primary">Modifier</button>
+					<div class="d-flex ">
+						<button type="submit" class="btn btn-primary mx-auto mt-2">Modifier</button>
+					</div>
 				</c:when>
 				<c:otherwise>
-				<div class="d-flex ">
-					<button type="submit" class="btn btn-primary mx-auto mt-2">Créer</button>
+					<div class="d-flex ">
+						<button type="submit" class="btn btn-primary mx-auto mt-2">Créer</button>
 					</div>
 				</c:otherwise>
 			</c:choose>
-		</form>
+		
 	</div>
 </body>
 </html>
