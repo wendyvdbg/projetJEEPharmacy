@@ -30,19 +30,24 @@ li a:hover {
 </style>
 </head>
 <body>
-	<ul class="d-flex">
+	<ul>
 		<li><a class="active" href="/JEE/Articles">Accueil</a></li>
+		<li class="d-flex justify-content-end" style="width: 91vw">
+			<form class="d-flex me-4" action="Article" method="get">
+				<input type="text" class="form-control my-2" id="articleName" name="articleName"
+					placeholder="Rechercher">
+				<button type="submit" class="btn btn-outline-light  my-2">Rechercher</button>
+			</form> <c:if
+				test="${ !empty sessionScope.connected && sessionScope.connected }">
 
-		<c:if
-			test="${ !empty sessionScope.connected && sessionScope.connected }">
-			<li class="ms-auto me-2">
-				<form action="Authentification" method="post" class="mt-1">
-					<input type="text" class="form-control d-none" id="deconnexion" name="deconnexion"
-						value="deconnexion">
-					<button type="submit" class="btn btn-danger ">Déconnexion</button>
+				<form action="Authentification" method="post">
+					<input type="text" class="form-control d-none" id="deconnexion"
+						name="deconnexion" value="deconnexion">
+					<button type="submit" class="btn btn-danger my-2">Déconnexion</button>
 				</form>
-			</li>
-		</c:if>
+
+			</c:if>
+		</li>
 	</ul>
 
 </body>

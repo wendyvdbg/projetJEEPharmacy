@@ -9,5 +9,5 @@ public interface ArticleDao {
 		void ajouter(Article article);
 		void supprimer(int id);
 		void modifier(Article article);
-		Article trouver(int id);
+		Article trouver(String articleName);
 }

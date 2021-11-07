@@ -13,16 +13,18 @@
 <body>
 	<%@ include file="navbar.jsp"%>
 	<div class="container">
-	<c:if test="${requestScope.article.id == null && ! not empty requestScope.article.id }">
-		<div class="d-flex ">
-			<h1 class="mx-auto mt-5">Ajout d'un article</h1>
-		</div>
+		<c:if
+			test="${requestScope.article.id == null && ! not empty requestScope.article.id }">
+			<div class="d-flex ">
+				<h1 class="mx-auto mt-5">Ajout d'un article</h1>
+			</div>
 		</c:if>
 		<c:if
 			test="${requestScope.article.id != null && not empty requestScope.article.id }"
 			var="variable">
 			<div class="d-flex ">
-			<h2 class="mx-auto mt-5">Edition de l'article ${requestScope.article.title}</h2>
+				<h2 class="mx-auto mt-5">Edition de l'article
+					${requestScope.article.title}</h2>
 			</div>
 		</c:if>
 		<form action="articleForm" method="post">
@@ -45,7 +47,7 @@
 					value="${requestScope.article.price}" class="form-control"
 					id="price" name="price" placeholder="Prix">
 			</div>
-			</form>
+
 			<c:choose>
 				<c:when
 					test="${requestScope.article.id != null && not empty requestScope.article.id }">
@@ -59,7 +61,7 @@
 					</div>
 				</c:otherwise>
 			</c:choose>
-		
+		</form>
 	</div>
 </body>
 </html>

@@ -54,7 +54,7 @@
 					<td>${article.id}</td>
 					<td>${article.title}</td>
 					<td>${article.quantity}</td>
-					<td>${article.price}</td>
+					<td>${article.price}€</td>
 					<td>
 						<form action="ArticleForm" method="get">
 							<input type="text" class="form-control d-none" id="id" name="id"

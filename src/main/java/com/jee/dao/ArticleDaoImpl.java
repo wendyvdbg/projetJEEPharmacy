@@ -56,7 +56,7 @@ public class ArticleDaoImpl implements ArticleDao {
 		return articles;
 	}
 	@Override
-	public Article trouver(int id) {
+	public Article trouver(String articleName) {
 		Connection connexion = null;
 		PreparedStatement preparedStatement = null;
 		Article article = new Article();
@@ -65,13 +65,13 @@ public class ArticleDaoImpl implements ArticleDao {
 		try {
 			connexion = daoFactory.getConnection();
 			preparedStatement = connexion
-					.prepareStatement("SELECT * FROM articles WHERE id= ?;");
-			preparedStatement.setInt(1, id);
+					.prepareStatement("SELECT * FROM articles WHERE title= ?;");
+			preparedStatement.setString(1, articleName);
 			resultat = preparedStatement.executeQuery();
-			article.setId(resultat.getInt("id"));
-			article.setTitle(resultat.getString("title"));
-			article.setQuantity(resultat.getInt("quantity"));
-			article.setPrice(resultat.getDouble("price"));
+			while (resultat.next()) {
+				article = new Article(resultat.getInt("id"),resultat.getString("title"), resultat.getInt("quantity"),
+						resultat.getDouble("price"));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
